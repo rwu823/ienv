@@ -1,9 +1,10 @@
 const Global = (1, eval)('this') // eslint-disable-line no-eval
 
-const isBrowser = !!(Global.document && document.createELement)
-const isNode =
-  Object.prototype.toString.call(Global.process && process) ===
-  '[object process]'
+const isOf = (obj, type = '') =>
+  `[object ${type}]` === Object.prototype.toString.call(obj)
+
+const isBrowser = isOf(Global.document, 'HTMLDocument')
+const isNode = isOf(Global.process, 'process')
 
 const hasEnv = Global.process && process.env
 
