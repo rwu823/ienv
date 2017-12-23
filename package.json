@@ -4,6 +4,8 @@
   "main": "src/index.js",
   "license": "MIT",
   "description": "Is Env - Environment Detecter",
+  "repository": "https://github.com/rwu823/ienv.git",
+  "author": "Rocky Wu <rwu823@gmail.com>",
   "keywords": [
     "env",
     "is",
