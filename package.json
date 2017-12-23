@@ -1,7 +1,7 @@
 {
   "name": "ienv",
   "version": "0.0.1",
-  "main": "src/index.js",
+  "main": "index.js",
   "license": "MIT",
   "description": "Is Env - Environment Detecter",
   "repository": "https://github.com/rwu823/ienv.git",
