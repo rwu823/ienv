@@ -1,0 +1,40 @@
+{
+  "name": "ienv",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "license": "MIT",
+  "description": "Is Env - Environment Detecter",
+  "keywords": [
+    "env",
+    "is",
+    "is-env",
+    "detect",
+    "node",
+    "browser",
+    "server",
+    "client"
+  ],
+  "devDependencies": {
+    "@rwu823/eslint-config-base": "https://github.com/rwu823/eslint-config-base",
+    "@types/jest": "^21.1.9",
+    "eslint": "^4.13.1",
+    "husky": "^0.14.3",
+    "jest": "^22.0.4",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
+    "shelljs": "^0.7.8"
+  },
+  "dependencies": {},
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "eslint ./ --ignore-path .gitignore",
+    "build": "rm -rf out && mkdir out && cp package.json README.md index.js out",
+    "test": "jest --coverage"
+  }
+}
