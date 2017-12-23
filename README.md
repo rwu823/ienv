@@ -20,6 +20,15 @@
 $ yarn add ienv
 ```
 
+## Usage
+
+```js
+import ienv from 'ienv'
+
+// or
+import { isNode } from 'ienv'
+```
+
 ## Exports CONSTANTS
 
 ### env: string
