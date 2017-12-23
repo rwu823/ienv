@@ -34,7 +34,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "lint": "eslint ./ --ignore-path .gitignore",
-    "build": "rm -rf out && mkdir out && cp package.json README.md index.js out",
+    "build": "rm -rf out && mkdir out && cp package.json README.md src/index.js out",
     "test": "jest --coverage"
   }
 }
