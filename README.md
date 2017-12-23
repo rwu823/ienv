@@ -3,9 +3,9 @@
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/ienv">
-    <img src="https://img.shields.io/npm/v/ienv/master.svg?style=flat-square&" />
+    <img src="https://img.shields.io/npm/v/ienv.svg?style=flat-square&" />
   </a>
-  <a href="https://travis-ci.org/ienv" alt="Build Status">
+  <a href="https://travis-ci.org/rwu823/ienv" alt="Build Status">
     <img src="https://img.shields.io/travis/rwu823/ienv.svg?style=flat-square&" />
   </a>
   <a href="https://codecov.io/gh/rwu823/ienv" alt="Coverage">
