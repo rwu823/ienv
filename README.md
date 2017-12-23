@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="128" src="./assets/logo.png" />
+  <img width="180" src="./assets/logo.png" />
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/ienv">
