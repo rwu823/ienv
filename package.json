@@ -1,6 +1,6 @@
 {
   "name": "ienv",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "main": "src",
   "license": "MIT",
   "description": "Is Env - Environment Detecter",
