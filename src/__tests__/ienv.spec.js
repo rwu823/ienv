@@ -2,7 +2,9 @@ const ienv = require('../')
 
 describe('Test ienv Spec', () => {
   it('ienv should not be modified', async () => {
-    ienv.env = 'modified'
+    expect(() => {
+      ienv.env = 'modified'
+    }).toThrow()
 
     expect(ienv.env).toBe('test')
   })
