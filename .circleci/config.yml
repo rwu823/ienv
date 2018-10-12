@@ -1,0 +1,102 @@
+version: 2
+vars:
+  init: &init
+    docker:
+      - image: circleci/node:8
+    environment:
+      TZ: Asia/Taipei
+
+  branch_is_deploy: &branch_is_deploy
+    filters:
+      branches:
+        only: master
+
+  save_node_modules: &save_node_modules
+    save_cache:
+      key: node_modules#{{ checksum "yarn.lock" }}
+      paths:
+        - node_modules
+
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      key: node_modules#{{ checksum "yarn.lock" }}
+
+  save_out: &save_out
+    save_cache:
+      key: out#{{ .Revision }}
+      paths:
+        - out
+
+  restore_out: &restore_out
+    restore_cache:
+      key: out#{{ .Revision }}
+
+  setup_npm: &setup_npm
+    run:
+      name: Setup NPM
+      command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+  setup_git: &setup_git
+    run:
+      name: Setup Git
+      command: |
+        git config --global user.name Rocky Wu
+        git config --global user.email rwu823@gmail.com
+
+
+  set_env: &set_env
+    run:
+      name: Set Env
+      command: |
+        echo $'export TAG=v$(cat package.json | grep version | cut -d \'"\' -f4'\) > $BASH_ENV
+
+        source $BASH_ENV
+
+        echo "TAG=$TAG"
+
+  push_tag: &push_tag
+      run:
+        name: Push Git Tag
+        command: |
+          git tag $TAG
+          git push https://$GH_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git $TAG
+jobs:
+  build:
+    <<: *init
+    steps:
+      - checkout
+      - *restore_node_modules
+      - run: yarn
+      - *save_node_modules
+      - run: yarn build
+      - *save_out
+
+  npm:
+    <<: *init
+    steps:
+      - *restore_out
+      - *setup_npm
+      - run: npm publish out
+
+  tag:
+    <<: *init
+    steps:
+      - checkout
+      - *setup_git
+      - *set_env
+      - *push_tag
+
+workflows:
+  version: 2
+  Deploy:
+    jobs:
+      - build:
+          <<: *branch_is_deploy
+      - npm:
+          <<: *branch_is_deploy
+          requires:
+            - build
+      - tag:
+          <<: *branch_is_deploy
+          requires:
+            - build

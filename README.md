@@ -1,17 +1,20 @@
-<p align="center">
+<h1 align="center">
   <img width="180" src="./assets/logo.png" />
-</p>
+</h1>
 <p align="center">
-  <a href="https://www.npmjs.com/package/ienv">
-    <img src="https://img.shields.io/npm/v/ienv.svg?style=flat-square&" />
+  <a href="https://github.com/rwu823/ienv/releases">
+    <img src="https://flat.badgen.net/github/release/rwu823/ienv" />
   </a>
-  <a href="https://travis-ci.org/rwu823/ienv" alt="Build Status">
-    <img src="https://img.shields.io/travis/rwu823/ienv.svg?style=flat-square&" />
+  <a href="https://www.npmjs.com/package/ienv">
+    <img src="https://flat.badgen.net/npm/v/ienv" />
+  </a>
+  <a href="https://circleci.com/gh/rwu823/ienv" alt="Build Status">
+    <img src="https://flat.badgen.net/circleci/github/rwu823/ienv/master" />
   </a>
   <a href="https://codecov.io/gh/rwu823/ienv" alt="Coverage">
-    <img src="https://img.shields.io/codecov/c/github/rwu823/ienv/master.svg?style=flat-square&" />
+    <img src="https://flat.badgen.net/codecov/c/github/rwu823/ienv" />
   </a>
-  <img src="https://img.shields.io/github/license/rwu823/ienv.svg?style=flat-square&" />
+  <img src="https://flat.badgen.net/github/license/rwu823/ienv" />
 </p>
 
 ## Installation
@@ -23,10 +26,7 @@ $ yarn add ienv
 ## Usage
 
 ```js
-import ienv from 'ienv'
-
-// or
-import { isNode } from 'ienv'
+import env, { isNode, isDev } from 'ienv'
 ```
 
 ## Exports CONSTANTS
@@ -35,26 +35,26 @@ import { isNode } from 'ienv'
 
 Get `process.NODE_ENV` default is `development`
 
-### isDev: bool
+### isDev: boolean
 
 ```js
 process.NODE_ENV === 'development'
 ```
 
-### isProd: bool
+### isProd: boolean
 
 ```js
 process.NODE_ENV === 'production'
 ```
 
-### isBrowser: bool
+### isBrowser: boolean
 
 Check if in browser
 
-### isNode: bool
+### isNode: boolean
 
 Check if in Node
 
-### global: Object
+### Global
 
 Returns `window` in browser, `global` in Node.

@@ -1,0 +1,16 @@
+{
+  "extends": "./node_modules/@rwu823/ts-base/tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "out/**/*",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+  ],
+  "compilerOptions": {
+    "outDir": "out",
+    "typeRoots": [
+      "node_modules/@types",
+      "./types"
+    ],
+  }
+}

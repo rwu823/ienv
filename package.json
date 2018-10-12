@@ -1,7 +1,7 @@
 {
   "name": "ienv",
-  "version": "1.0.0",
-  "main": "src",
+  "version": "2.0.0",
+  "main": ".",
   "license": "MIT",
   "description": "Is Env - Environment Detecter",
   "repository": "https://github.com/rwu823/ienv.git",
@@ -14,31 +14,26 @@
     "node",
     "browser",
     "server",
-    "client"
+    "client",
+    "global"
   ],
   "devDependencies": {
-    "@rwu823/eslint-config-base": "https://github.com/rwu823/eslint-config-base",
-    "@types/jest": "^21.1.9",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.13.1",
-    "husky": "^0.14.3",
-    "jest": "^22.0.4",
-    "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2",
-    "shelljs": "^0.7.8"
+    "@rwu823/ts-base": "github:rwu823/ts-base#latest"
   },
   "dependencies": {},
+  "scripts": {
+    "build": "rm -rf out && tsc && cp -R package.json README.md out",
+    "test": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.{js,md}": [
+    "*.{ts,tsx,js,jsx,css}": [
       "prettier --write",
       "git add"
     ]
-  },
-  "scripts": {
-    "precommit": "lint-staged",
-    "lint": "eslint ./ --ignore-path .gitignore",
-    "build": "rm -rf out && babel src/index.js -d out && cp package.json README.md out",
-    "test": "jest --coverage"
   }
 }
